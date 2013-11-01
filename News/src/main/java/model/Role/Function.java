@@ -1,4 +1,4 @@
-package model.user;
+package model.Role;
 
 /**
  * Created with IntelliJ IDEA.
