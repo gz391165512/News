@@ -1,4 +1,4 @@
-package picNewsModel;
+package model.picNewsModel;
 
 /**
  * Created with IntelliJ IDEA.
