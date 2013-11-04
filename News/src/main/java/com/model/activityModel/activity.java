@@ -3,11 +3,11 @@ package com.model.activityModel;
 /**
  * Created with IntelliJ IDEA.
  * User: 周方
- * Date: 13-10-31
- * Time: 下午9:14
+ * Date: 13-11-4
+ * Time: 下午12:56
  * To change this template use File | Settings | File Templates.
  */
-class Activity {
+public class Activity {
     private int avyId;
     private String avyTitle;
     private int avyContent;
