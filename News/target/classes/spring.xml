@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <bean name="sessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+        <property name="configLocations">
+            <value>classpath:hibernate.cfg.xml</value>
+        </property>
+    </bean>
+
+    <!--<bean class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator">-->
+    <!--</bean>-->
+
+    <!--<bean name="transactionAdvisor"-->
+          <!--class="org.springframework.transaction.interceptor.TransactionAttributeSourceAdvisor">-->
+        <!--&lt;!&ndash;<property name="transactionInterceptor">&ndash;&gt;-->
+            <!--&lt;!&ndash;<ref bean="transactionInterceptor"></ref>&ndash;&gt;-->
+        <!--&lt;!&ndash;</property>&ndash;&gt;-->
+        <!--<constructor-arg>-->
+            <!--<ref bean="transactionInterceptor"></ref>-->
+        <!--</constructor-arg>-->
+    <!--</bean>-->
+    <bean class="org.springframework.aop.framework.autoproxy.BeanNameAutoProxyCreator">
+        <property name="beanNames">
+            <list>
+                <value>*Manager</value>
+            </list>
+        </property>
+        <property name="interceptorNames">
+            <list>
+                <value>transactionInterceptor</value>
+            </list>
+        </property>
+    </bean>
+    <bean name="transactionInterceptor" class="org.springframework.transaction.interceptor.TransactionInterceptor">
+        <property name="transactionManager">
+            <ref bean="transactionManager"></ref>
+        </property>
+        <property name="transactionAttributeSource">
+            <ref bean="transactionAttributeSource"></ref>
+        </property>
+    </bean>
+    <bean name="transactionAttributeSource"
+          class="org.springframework.transaction.interceptor.NameMatchTransactionAttributeSource">
+        <property name="properties">
+            <props>
+                <prop key="save*">PROPAGATION_REQUIRED</prop>
+                <prop key="delete*">PROPAGATION_REQUIRED</prop>
+                <prop key="create*">PROPAGATION_REQUIRED</prop>
+                <prop key="update*">PROPAGATION_REQUIRED</prop>
+            </props>
+        </property>
+    </bean>
+
+    <bean name="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+        <property name="sessionFactory" ref="sessionFactory"></property>
+    </bean>
+
+</beans>

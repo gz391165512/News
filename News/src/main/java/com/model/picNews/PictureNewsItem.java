@@ -1,13 +1,13 @@
-package com.model.picNewsModel;
+package com.model.picNews;
 
 /**
  * Created with IntelliJ IDEA.
- * User: Administrator
+ * User: 罗志敏
  * Date: 13-10-31
  * Time: 下午2:40
  * To change this template use File | Settings | File Templates.
  */
-public class pictureNewsItem {
+public class PictureNewsItem {
     private int picId;
     private String picContent;
     private String picPicpath;
