@@ -7,7 +7,7 @@ package com.model.activityModel;
  * Time: 下午9:32
  * To change this template use File | Settings | File Templates.
  */
-public class activityRegistration {
+public class ActivityRegistration {
     private  int avyRegId;
     private  String avyRegName;
     private  int avyRegPhone;

@@ -7,7 +7,7 @@ package com.model.activityModel;
  * Time: 下午9:14
  * To change this template use File | Settings | File Templates.
  */
-class activity {
+class Activity {
     private int avyId;
     private String avyTitle;
     private int avyContent;
